@@ -1,5 +1,6 @@
-<!<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/main.js" defer></script>
 </head>
+
 <body>
     <header>
         <div class="logo">Denix Admin</div>
@@ -15,32 +17,120 @@
                 <li><a href="#analytics">Analytics</a></li>
                 <li><a href="#products">Manage Products</a></li>
                 <li><a href="#orders">Orders</a></li>
+                <li><a href="#users">User Management</a></li>
                 <li><a href="#settings">Settings</a></li>
+                <li><a href="#upload">File Upload</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
+        <!-- Analytics Section -->
         <section id="analytics">
             <h2>Analytics Dashboard</h2>
             <div class="analytics-cards">
-                <div class="card">Total Sales: $5000</div>
-                <div class="card">Total Orders: 150</div>
-                <div class="card">Total Visitors: 2000</div>
+                <div class="card">Total Clicks: <span id="total-clicks">0</span></div>
+                <div class="card">Total Conversions: <span id="total-conversions">0</span></div>
+                <div class="card">Total Revenue: <span id="total-revenue">$0</span></div>
+            </div>
+            <div class="analytics-graph">
+                <h3>Performance Over Time</h3>
+                <canvas id="analyticsChart"></canvas>
             </div>
         </section>
 
+        <!-- Products Section -->
         <section id="products">
             <h2>Manage Products</h2>
-            <button class="cta-button">Add New Product</button>
+            <button class="cta-button" id="add-product-btn">Add New Product</button>
             <div class="product-list">
-                <!-- Product items will be listed here -->
+                <!-- Product items will be dynamically listed here -->
             </div>
+        </section>
+
+        <!-- Orders Section -->
+        <section id="orders">
+            <h2>Order Management</h2>
+            <div class="order-list">
+                <!-- Order items will be dynamically listed here -->
+            </div>
+        </section>
+
+        <!-- User Management Section -->
+        <section id="users">
+            <h2>User Management</h2>
+            <div class="user-list">
+                <!-- User items will be dynamically listed here -->
+            </div>
+        </section>
+
+        <!-- Settings Section -->
+        <section id="settings">
+            <h2>Settings</h2>
+            <form id="settings-form">
+                <label for="site-title">Site Title:</label>
+                <input type="text" id="site-title" placeholder="Enter site title" required>
+                <label for="site-description">Site Description:</label>
+                <textarea id="site-description" placeholder="Enter site description" required></textarea>
+                <button type="submit">Save Settings</button>
+            </form>
+        </section>
+
+        <!-- File Upload Section -->
+        <section id="upload">
+            <h2>File Upload</h2>
+            <form id="upload-form" enctype="multipart/form-data">
+                <input type="file" name="file" required>
+                <button type="submit">Upload</button>
+            </form>
         </section>
     </main>
 
     <footer>
         <p>&copy; 2023 Denix Admin. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Sample data for analytics
+        const totalClicks = 1500;
+        const totalConversions = 300;
+        const totalRevenue = 1200;
+
+        document.getElementById('total-clicks').innerText = totalClicks;
+        document.getElementById('total-conversions').innerText = totalConversions;
+        document.getElementById('total-revenue').innerText = `$${totalRevenue}`;
+
+        // Chart setup (using Chart.js)
+        const ctx = document.getElementById('analyticsChart').getContext('2d');
+        const analyticsChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Clicks',
+                    data: [100, 200, 300, 400, 500, 600],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // File upload handler
+        document.getElementById('upload-form').addEventListener('submit', (event) => {
+            event.preventDefault();
+            alert('File uploaded successfully!');
+            // Add further handling for file uploads here
+        });
+    </script>
 </body>
+
 </html>
