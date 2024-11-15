@@ -1,0 +1,80 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+}
+
+.neumorphism {
+    background: #e0e0e0;
+    border-radius: 20px;
+    box-shadow: 20px 20px 60px #c8c8c8, -20px -20px 60px #ffffff;
+    padding: 40px;
+    text-align: center;
+}
+
+.cta-button {
+    background-color: #6200ea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #3700b3;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.polygon-illustration {
+    background: url('path/to/your/polygon-image.svg') no-repeat center center;
+    background-size: cover;
+    padding: 40px;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+}
