@@ -1,9 +1,13 @@
+/* Import Montserrat font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 /* General variables */
 :root {
-    --primary-color: #6200ea;
-    --primary-hover-color: #3700b3;
-    --background-color: #f0f0f0;
-    --card-bg-color: #fff;
+    --primary-color: #d2b48c; /* Light tan */
+    --accent-color: #34a85a; /* Green for hover effects */
+    --primary-hover-color: #3700b3; /* Darker accent */
+    --background-color: #f2f2f2;
+    --card-bg-color: #ffffff;
     --text-color: #333;
     --border-radius: 15px;
     --shadow-small: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -13,26 +17,35 @@
 
 /* Global styles */
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
     background-color: var(--background-color);
     color: var(--text-color);
+    margin: 0;
+    padding: 0;
 }
 
 /* Header styles */
 header {
-    background: var(--card-bg-color);
-    box-shadow: var(--shadow-small);
+    background: var(--primary-color);
     padding: 20px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    box-shadow: var(--shadow-small);
 }
 
-header .logo {
-    font-size: 24px;
+header h1 {
+    font-size: 36px;
     font-weight: bold;
+    margin: 0;
+    color: var(--card-bg-color);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
 nav ul {
@@ -44,13 +57,14 @@ nav ul {
 }
 
 nav a {
+    color: var(--card-bg-color);
     text-decoration: none;
-    color: var(--text-color);
+    font-weight: 400;
     transition: color 0.3s;
 }
 
 nav a:hover {
-    color: var(--primary-color);
+    color: var(--accent-color);
 }
 
 /* Neumorphism styles */
@@ -60,30 +74,6 @@ nav a:hover {
     box-shadow: var(--shadow-light);
     padding: 40px;
     text-align: center;
-}
-
-/* Polygon illustration */
-.polygon-illustration {
-    background: url('path/to/your/polygon-image.svg') no-repeat center center;
-    background-size: cover;
-    padding: 40px;
-    color: white;
-}
-
-/* CTA Button with micro animations */
-.cta-button {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: var(--border-radius);
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.cta-button:hover {
-    background-color: var(--primary-hover-color);
-    transform: scale(1.05);
 }
 
 /* Glassmorphism effect */
@@ -103,25 +93,82 @@ nav a:hover {
     padding: 20px;
 }
 
-/* Card style */
-.card {
+/* Product card */
+.product-card {
     background: var(--card-bg-color);
     border-radius: var(--border-radius);
-    padding: 20px;
     box-shadow: var(--shadow-small);
+    padding: 10px;
+    text-align: center;
     transition: transform 0.2s, box-shadow 0.3s;
 }
 
-.card:hover {
+.product-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+/* CTA Button */
+.cta-button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.cta-button:hover {
+    background-color: var(--primary-hover-color);
+    transform: scale(1.05);
+}
+
 /* Footer styles */
 footer {
+    background-color: var(--primary-color);
+    color: var(--card-bg-color);
     text-align: center;
     padding: 20px;
-    background: var(--card-bg-color);
-    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
-    font-size: 14px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    header {
+        align-items: center;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav a {
+        margin: 10px 0;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 24px;
+    }
+
+    nav a {
+        font-size: 16px;
+    }
+
+    main {
+        padding: 10px;
+    }
 }
