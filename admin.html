@@ -14,53 +14,89 @@
         <div class="logo">Denix Admin</div>
         <nav>
             <ul>
-                <li><a href="#analytics">Analytics</a></li>
+                <li><a href="#analytics">Dashboard</a></li>
                 <li><a href="#products">Manage Products</a></li>
                 <li><a href="#orders">Orders</a></li>
                 <li><a href="#users">User Management</a></li>
                 <li><a href="#settings">Settings</a></li>
                 <li><a href="#upload">File Upload</a></li>
+                <li><a href="logout.html">Logout</a></li>
             </ul>
         </nav>
+        <input type="text" class="search-bar" placeholder="Search...">
     </header>
 
     <main>
-        <!-- Analytics Section -->
+        <!-- Dashboard Section -->
         <section id="analytics">
-            <h2>Analytics Dashboard</h2>
-            <div class="analytics-cards">
-                <div class="card">Total Clicks: <span id="total-clicks">0</span></div>
-                <div class="card">Total Conversions: <span id="total-conversions">0</span></div>
-                <div class="card">Total Revenue: <span id="total-revenue">$0</span></div>
-            </div>
-            <div class="analytics-graph">
-                <h3>Performance Over Time</h3>
-                <canvas id="analyticsChart"></canvas>
+            <h2>Dashboard Overview</h2>
+            <div class="dashboard-summary">
+                <div class="card">Total Products: 150</div>
+                <div class="card">Total Orders: 300</div>
+                <div class="card">Total Users: 500</div>
+                <div class="card">Total Sales: $5000</div>
             </div>
         </section>
 
         <!-- Products Section -->
         <section id="products">
             <h2>Manage Products</h2>
-            <button class="cta-button" id="add-product-btn">Add New Product</button>
+            <form id="product-form">
+                <label for="product-name">Product Name:</label>
+                <input type="text" id="product-name" name="product-name" required>
+                <label for="product-price">Price:</label>
+                <input type="number" id="product-price" name="product-price" required>
+                <button type="submit">Add Product</button>
+            </form>
             <div class="product-list">
-                <!-- Product items will be dynamically listed here -->
+                <h3>Product List</h3>
+                <ul>
+                    <li>Product 1 - $20</li>
+                    <li>Product 2 - $30</li>
+                    <!-- Dynamically populated product list -->
+                </ul>
             </div>
         </section>
 
         <!-- Orders Section -->
         <section id="orders">
-            <h2>Order Management</h2>
-            <div class="order-list">
-                <!-- Order items will be dynamically listed here -->
-            </div>
+            <h2>Recent Orders</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Date</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>12345</td>
+                        <td>2024-01-15</td>
+                        <td>$29.99</td>
+                        <td>Completed</td>
+                    </tr>
+                    <tr>
+                        <td>12346</td>
+                        <td>2024-01-20</td>
+                        <td>$49.99</td>
+                        <td>Pending</td>
+                    </tr>
+                    <!-- More rows dynamically added -->
+                </tbody>
+            </table>
         </section>
 
         <!-- User Management Section -->
         <section id="users">
             <h2>User Management</h2>
             <div class="user-list">
-                <!-- User items will be dynamically listed here -->
+                <ul>
+                    <li>User 1 - Active</li>
+                    <li>User 2 - Inactive</li>
+                    <!-- Dynamically populated user list -->
+                </ul>
             </div>
         </section>
 
@@ -87,48 +123,33 @@
     </main>
 
     <footer>
-        <p>&copy; 2023 Denix Admin. All rights reserved.</p>
+        <p>&copy; 2024 Denix Admin. All rights reserved.</p>
+        <p>
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Terms of Service</a> | 
+            <a href="#">Follow us on Social Media</a>
+        </p>
     </footer>
 
     <script>
-        // Sample data for analytics
-        const totalClicks = 1500;
-        const totalConversions = 300;
-        const totalRevenue = 1200;
+        // Example analytics data
+        const analyticsData = {
+            clicks: 1500,
+            conversions: 300,
+            revenue: 1200
+        };
 
-        document.getElementById('total-clicks').innerText = totalClicks;
-        document.getElementById('total-conversions').innerText = totalConversions;
-        document.getElementById('total-revenue').innerText = `$${totalRevenue}`;
-
-        // Chart setup (using Chart.js)
-        const ctx = document.getElementById('analyticsChart').getContext('2d');
-        const analyticsChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-                datasets: [{
-                    label: 'Clicks',
-                    data: [100, 200, 300, 400, 500, 600],
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 2,
-                    fill: false
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
+        document.addEventListener('DOMContentLoaded', () => {
+            // Populate analytics data
+            document.getElementById('total-clicks').innerText = analyticsData.clicks;
+            document.getElementById('total-conversions').innerText = analyticsData.conversions;
+            document.getElementById('total-revenue').innerText = `$${analyticsData.revenue}`;
         });
 
         // File upload handler
         document.getElementById('upload-form').addEventListener('submit', (event) => {
             event.preventDefault();
             alert('File uploaded successfully!');
-            // Add further handling for file uploads here
         });
     </script>
 </body>
