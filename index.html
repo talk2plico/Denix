@@ -1,10 +1,10 @@
-<!DOCTYPE html<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Denix Storefront</title>
     <link rel="stylesheet" href="css/styles.css">
+    <title>Denix - Home</title>
     <script src="js/main.js" defer></script>
 </head>
 <body>
@@ -12,45 +12,80 @@
         <div class="logo">Denix</div>
         <nav>
             <ul>
-                <li><a href="#products">Products</a></li>
+                <li><a href="#hero">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#services">Services</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
+        <input type="text" class="search-bar" placeholder="Search...">
     </header>
 
     <main>
+        <!-- Hero Section -->
         <section id="hero" class="neumorphism">
             <h1>Welcome to Denix</h1>
-            <p>Your go-to place for affiliate products</p>
-            <button class="cta-button">Shop Now</button>
+            <p>Your modern application for managing files and finding affiliate products.</p>
+            <button class="cta-button">Get Started</button>
         </section>
 
+        <!-- Products Section -->
         <section id="products">
             <h2>Featured Products</h2>
             <div class="product-grid">
-                <!-- Product items will be dynamically added here -->
+                <div class="product-card">
+                    <img src="images/product1.jpg" alt="Product 1">
+                    <h3>Product 1</h3>
+                    <p>Price: $29.99</p>
+                    <p>Rating: ★★★★☆</p>
+                </div>
+                <div class="product-card">
+                    <img src="images/product2.jpg" alt="Product 2">
+                    <h3>Product 2</h3>
+                    <p>Price: $39.99</p>
+                    <p>Rating: ★★★★☆</p>
+                </div>
+                <!-- More product cards can be dynamically added -->
             </div>
         </section>
 
+        <!-- About Section -->
         <section id="about" class="polygon-illustration">
             <h2>About Us</h2>
-            <p>Denix is committed to bringing you the best affiliate products...</p>
+            <p>Denix is committed to providing you with the best tools for managing files and the finest affiliate products to enhance your lifestyle.</p>
         </section>
 
+        <!-- Services Section -->
+        <section id="services" class="glassmorphism">
+            <h2>Our Services</h2>
+            <ul>
+                <li>File Management</li>
+                <li>Affiliate Marketing Tools</li>
+                <li>Customizable Dashboard</li>
+                <li>Real-Time Analytics</li>
+            </ul>
+        </section>
+
+        <!-- Contact Section -->
         <section id="contact">
             <h2>Contact Us</h2>
             <form id="contact-form">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" required></textarea>
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
                 <button type="submit">Send</button>
             </form>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2023 Denix. All rights reserved.</p>
+        <p>&copy; 2024 Denix. All rights reserved.</p>
+        <p>
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Terms of Service</a> | 
+            <a href="#">Follow us on Social Media</a>
+        </p>
     </footer>
 </body>
 </html>
