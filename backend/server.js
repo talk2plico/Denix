@@ -1,27 +1,31 @@
-// backend/server.js
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose');
-require('dotenv').config();
+const dotenv = require('dotenv');
+const { connectDB } = require('./db'); // Import database connection function
+const userRoutes = require('./routes/userRoutes'); // Import user routes
+
+dotenv.config(); // Load environment variables
 
 const app = express();
+
+// Middleware
 app.use(cors());
 app.use(express.json());
 
+// Constants
 const PORT = process.env.PORT || 3000;
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('MongoDB connected'))
-    .catch(err => console.error(err));
+connectDB();
 
-// Define routes
-app.get('/api/users', (req, res) => {
-    // Logic to get users
-});
+// Routes
+app.use('/api/users', userRoutes); // User routes
+app.get('/health', (req, res) => res.status(200).send('Server is healthy')); // Health check route
 
-app.post('/api/users', (req, res) => {
-    // Logic to create a new user
+// Global Error Handler
+app.use((err, req, res, next) => {
+    console.error('Error:', err.message);
+    res.status(500).json({ error: 'An unexpected error occurred' });
 });
 
 // Start the server
